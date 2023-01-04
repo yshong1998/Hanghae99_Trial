@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>IT리뷰 다나와</title>
+<!--    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Open+Sans&display=swap" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="features.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        * {
+            /*font-family: 'Gowun Dodum', sans-serif;*/
+            /*font-family: 'Open Sans', sans-serif;*/
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .writeReview {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+        }
+
+
+
+        .mytitle {
+            height: 300px;
+            width: 100%;
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.techadvisor.com/wp-content/uploads/2022/09/iPhone-14-Pro_review_1.jpg?resize=1024%2C576&quality=50&strip=all");
+
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btns-center {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /*.mytitle > button {*/
+        /*    width: 200px;*/
+        /*    height: 50px;*/
+
+        /*    background-color: transparent;*/
+        /*    color: white;*/
+        /*    border-radius: 50px;*/
+        /*    border: 1px solid white;*/
+
+        /*    margin-top: 10px;*/
+        /*}*/
+
+        /*.mytitle > button:hover {*/
+        /*    border: 2px solid white;*/
+        /*}*/
+        .mycomment {
+            color: gray;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            width: 95%;
+            margin: 20px auto 0px auto;
+        }
+
+        .mypost {
+            max-width: 500px;
+            width: 95%;
+
+            margin: 20px auto 0px;
+            box-shadow: 0px 0px 3px 0px gray;
+            padding: 20px;
+
+            display: none;
+        }
+
+        .btns-wrap {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .btns-wrap > .btn {
+            margin-right: 10px;
+        }
+
+    </style>
+    <script>
+        // $(document).ready(function () {
+        //     listing();
+        // });
+        //
+        // function listing() {
+        //     $('#cards-box').empty()
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "http://spartacodingclub.shop/web/api/movie",
+        //         data: {},
+        //         success: function (response) {
+        //             let rows = response['movies']
+        //             for (let i = 0; i < rows.length; ++i) {
+        //                 let title = rows[i]['title']
+        //                 let desc = rows[i]['desc']
+        //                 let image = rows[i]['image']
+        //                 let star = rows[i]['star']
+        //                 let comment = rows[i]['comment']
+        //
+        //                 let star_image = '⭐'.repeat(star)
+        //
+        //                 // console.log(title, desc, image, star, comment)
+        //
+        //                 let temp_html = `<div class="col">
+        //                                     <div class="card">
+        //                                         <img src="${image}"
+        //                                              class="card-img-top" alt="...">
+        //                                         <div class="card-body">
+        //                                             <h5 class="card-title">${title}</h5>
+        //                                             <p class="card-text">${desc}</p>
+        //                                             <p>${star_image}</p>
+        //                                             <p class="mycomment">${comment}</p>
+        //                                         </div>
+        //                                     </div>
+        //                                 </div>`
+        //                 $('#cards-box').append(temp_html)
+        //             }
+        //         }
+        //     })
+        // }
+
+        // function open_box() {
+        //     $('#post-box').show()
+        // }
+        // function close_box() {
+        //     $('#post-box').hide()
+        // }
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <header class="d-flex justify-content-center py-3">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">컴퓨터</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">태블릿 PC</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">스마트폰</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">스마트워치</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">기타</a></li>
+                </ul>
+            </header>
+        </div>
+        <div class="mytitle">
+            <h1 class="text-shadow-2">IT리뷰 다나와</h1>
+            <!--        <button onclick="open_box()" class="btn btn-light">리뷰 작성하기 🔥</button>-->
+            <div class="writeReview">
+                <button class="btn btn-secondary">글 작성</button>
+            </div>
+        </div>
+    </main>
+
+
+
+<!--    <div class="mypost" id="post-box">-->
+<!--        <div class="form-floating">-->
+<!--            <input class="form-control" id="url">-->
+<!--            <label for="url">영화URL</label>-->
+<!--        </div>-->
+<!--        <div class="input-group mt-3">-->
+<!--            <label class="input-group-text" for="inputGroupSelect01">별점</label>-->
+<!--            <select class="form-select" id="inputGroupSelect01">-->
+<!--                <option selected>&#45;&#45;선택하기&#45;&#45;</option>-->
+<!--                <option value="1">⭐</option>-->
+<!--                <option value="2">⭐⭐</option>-->
+<!--                <option value="3">⭐⭐⭐</option>-->
+<!--                <option value="4">⭐⭐⭐⭐</option>-->
+<!--                <option value="5">⭐⭐⭐⭐⭐</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="form-floating mt-3">-->
+<!--            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"-->
+<!--                      style="height: 100px"></textarea>-->
+<!--            <label for="floatingTextarea2">코멘트</label>-->
+<!--        </div>-->
+<!--        <div class="btns-wrap">-->
+<!--            <button type="button" class="btn btn-dark">기록하기</button>-->
+<!--            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="b-example-divider"></div>
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom">최신 리뷰들</h2>
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                     style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.slashgear.com/img/gallery/apple-macbook-pro-16-inch-review-after-5-months-im-convinced/intro-1646069705.webp') ;">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-2">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">맥북 프로 16 기존 제품과 얼마나 달라졌나?</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                     class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill"/>
+                                </svg>
+                                <small>김범수</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3"/>
+                                </svg>
+                                <small>⭐⭐⭐</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                     style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.techadvisor.com/wp-content/uploads/2022/09/iPhone-14-Pro_review_1.jpg?resize=1024%2C576&quality=50&strip=all') ">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-2">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">다이나믹 아일랜드를 가진 아이폰 14 프로</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                     class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill"/>
+                                </svg>
+                                <small>박보검</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3"/>
+                                </svg>
+                                <small>⭐⭐⭐⭐</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                     style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://i2-prod.irishmirror.ie/incoming/article28229541.ece/ALTERNATES/s810/1_Apple-AirPods-Pro-2nd-gen-hero-220907.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-2">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">더욱 강력해진 노이즈 캔슬링, 에어팟 프로 2</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                     class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill"/>
+                                </svg>
+                                <small>이승기</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3"/>
+                                </svg>
+                                <small>⭐⭐⭐⭐⭐</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <div class="wrap">-->
+<!--        <div id="cards-box" class="row row-cols-1 row-cols-md-5 g-4">-->
+<!--            <div class="col">-->
+<!--                <div class="card">-->
+<!--                    <div >-->
+<!--                        <img src="https://cdn.pocket-lint.com/r/s/970x/assets/images/150265-laptops-review-macbook-pro-16-inch-review-a-typing-power-house-image1-ga7cf05o2j.jpg" class="img-thumbnail" alt="...">-->
+<!--                        <div style="background-color:green;">g</div>-->
+<!--                    </div>-->
+
+<!--                    <img src="https://cdn.pocket-lint.com/r/s/970x/assets/images/150265-laptops-review-macbook-pro-16-inch-review-a-typing-power-house-image1-ga7cf05o2j.jpg" class="card-img-top" alt="...">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">${title}</h5>-->
+<!--                        <p class="card-text">${desc}</p>-->
+<!--                        <p>${star_image}</p>-->
+<!--                        <p class="mycomment">${comment}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+</body>
+
+</html>
